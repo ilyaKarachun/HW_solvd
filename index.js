@@ -1,4 +1,5 @@
-let bigInt = require("big-integer");
+import bigInt from "big-integer";
+// let bigInt = require("big-integer");
 
 class Stringer  {
 
