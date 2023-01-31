@@ -6,13 +6,13 @@ sum(1) //1
 sum(1)(2) //2
 sum(1)(2)(3)(4)(5)(6)(7) //28 */
 
-function running(total) {
+function sum(total) {
     let summation = function () {
-        let sum = total;
+        let generalSum = total;
         let length = arguments.length;
         for (let i = 0; i < length; i++)
-            sum += arguments[i];
-        return running(sum);
+            generalSum += arguments[i];
+        return sum(generalSum);
     }
 
     summation.valueOf = function () {
@@ -22,9 +22,9 @@ function running(total) {
     return summation;
 }
 
-console.log(+running(1));
-console.log(+running(1)(2))
-console.log(+running(1)(2)(3)(4)(5)(6)(7))
+console.log(+sum(1));
+console.log(+sum(1)(2))
+console.log(+sum(1)(2)(3)(4)(5)(6)(7))
 
 
 // const sum = (n) => {
