@@ -1,13 +1,71 @@
   <script>
-      const debounce = ( fn, delay = 0) => {
-        debugger
-         return  setTimeout( () => {
-              return fn()
-          }, delay)
-
+    function running(total) {
+      let summation = function () {
+        let sum = total;
+        let length = arguments.length;
+        for (let i = 0; i < length; i++)
+          sum += arguments[i];
+        return running(sum);
       }
 
-      const sayHi = () => console.log('hi')
+      summation.valueOf = function () {
+        return total;
+      };
 
-      console.log(debounce(sayHi, 30000))
+      return summation;
+    }
+
+    console.log(+running(1));
+    console.log(+running(1)(2))
+    console.log(+running(1)(2)(3)(4)(5)(6)(7))
+
+    function add(n){
+      let fn = function(x) {
+        return add(n + x);
+      };
+
+      fn.valueOf = function() {
+        return n;
+      };
+
+      return fn;
+    }
+
+    console.log(add(1));
+    console.log(add(1)(2))
+    console.log(add(1)(2)(3)(4)(5)(6)(7))
+
+
+
+
+    // const curry = fn => {
+    //   const innerFn = (N, args) => {
+    //     return (...x) => {
+    //       if (N <= x.length) {
+    //         return fn(...args, ...x);
+    //       }
+    //       return innerFn(N - x.length, [...args, ...x]);
+    //     };
+    //   };
+    //
+    //   return innerFn(fn.length, []);
+    // };
+    //
+    // console.log(curry(2, 3)(4))
+
+
+    // function adding(...arg) {
+    //
+    //   return function clousureReturn(...arg1) {
+    //     if (!arguments.length) {
+    //       let finalArr = [...arg, ...arg1];
+    //       let total = finalArr.reduce((sum, ele) => sum + ele);
+    //       return total;
+    //     }
+    //
+    //     return adding(...arg, ...arg1)
+    //   }
+    // }
+    //
+    // console.log(adding(3)(2)(5)(3))
   </script>

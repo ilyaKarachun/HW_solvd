@@ -6,24 +6,25 @@ sum(1) //1
 sum(1)(2) //2
 sum(1)(2)(3)(4)(5)(6)(7) //28 */
 
-const infiniteCurry = fn => {
-    const next = (...args) => {
-        return x => {
-            if (!x) {
-                return args.reduce((acc, a) => {
-                    return fn.call(fn, acc, a)
-                }, 0);
-            }
-            return next(...args, x);
-        };
-    };
-    return next;
-};
+function running(total) {
+    let summation = function () {
+        let sum = total;
+        let length = arguments.length;
+        for (let i = 0; i < length; i++)
+            sum += arguments[i];
+        return running(sum);
+    }
 
-const sum = infiniteCurry((x, y) => x + y);
-console.log(sum(1)());
-console.log(sum(1)(2)())
-console.log(sum(1)(2)(3)(4)(5)(6)(7)())
+    summation.valueOf = function () {
+        return total;
+    };
+
+    return summation;
+}
+
+console.log(+running(1));
+console.log(+running(1)(2))
+console.log(+running(1)(2)(3)(4)(5)(6)(7))
 
 
 // const sum = (n) => {
@@ -45,9 +46,10 @@ console.log(sum(1)(2)(3)(4)(5)(6)(7)())
 //     return helper
 // }
 //
-// console.log(sum(1)()) //1
+// console.log(sum(1)) //1
 // console.log(sum(1)(2)) //2
 // console.log(sum(1)(2)(3)(4)(5)(6)(7)) //28
+
 
 /* Write a realisation of a debounce function, here is the specification:
 debounce(func, [wait=0])
@@ -66,5 +68,5 @@ const debounce = ( fn, delay = 0) => {
 
 const sayHi = () => console.log('hi')
 
-console.log(debounce(sayHi, 3000))
-console.log(debounce(sayHi))
+// console.log(debounce(sayHi, 3000))
+// console.log(debounce(sayHi))
