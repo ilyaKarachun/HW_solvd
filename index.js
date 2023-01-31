@@ -73,7 +73,7 @@ class Stringer  {
         aa.reverse();
         return aa.join("");
     }
-    multiply(str) {
+    multiple(str) {
             if (this.startStr === "0" || str === "0") {
                 return "0";
             }
@@ -167,10 +167,10 @@ class Stringer  {
         return ans;
     }
 }
-let test = new Stringer('10928332974734932898422')
+// let test = new Stringer('10928332974734932898422')
 
 // console.log(test.plus('99'))
-console.log(test.minus('1092833297473493289842'))
+// console.log(test.minus('1092833297473493289842'))
 // console.log(test.multiply('2'))
 // console.log(test.divide('2'))
 
@@ -237,10 +237,10 @@ console.log(test.minus('1092833297473493289842'))
 //     }
 // }
 //
-// let test = new Stringer('10000000000000000')
-//
-// console.log(test.plus(97328473487488383))
-// console.log(test.minus(1))
-// console.log(test.divide(2))
-// console.log(test.multiple(97328473487488383))
-// console.log(typeof (test.multiple(2)))
+let test = new Stringer('120')
+
+console.log(test.plus('97328473487488383'))
+console.log(test.minus('105'))
+console.log(test.divide('2'))
+console.log(test.multiple('97328473487488383'))
+console.log(typeof (test.multiple('2')))

@@ -1,0 +1,13 @@
+  <script>
+      const debounce = ( fn, delay = 0) => {
+        debugger
+         return  setTimeout( () => {
+              return fn()
+          }, delay)
+
+      }
+
+      const sayHi = () => console.log('hi')
+
+      console.log(debounce(sayHi, 30000))
+  </script>
