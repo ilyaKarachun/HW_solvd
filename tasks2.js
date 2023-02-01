@@ -28,14 +28,16 @@ Creates a debounced function that delays invoking func until after wait
 const debounce = ( fn, delay = 0) => {
     let fnId;
     return (...args) => {
-        clearInterval(fnId)
-        setTimeout(() => {
-            return fn(...args)
-        }, delay)
+        clearTimeout(fnId)
+        fnId = setTimeout(() => fn(...args), delay)
     }
 }
 
-const sayHi = () => console.log('hi')
+const sayHi = debounce (() => console.log('hi'), 1000)
 
-console.log(debounce(sayHi, 3000))
-console.log(debounce(sayHi))
+setTimeout(() => sayHi(), 3000)
+setTimeout(() => sayHi(), 3100)
+setTimeout(() => sayHi(), 10000)
+setTimeout(() => sayHi(), 30000)
+// console.log(debounce(sayHi))
+// setTimeout(() =>console.log(sayHi.toString()), 4000)
