@@ -6,25 +6,30 @@ sum(1) //1
 sum(1)(2) //2
 sum(1)(2)(3)(4)(5)(6)(7) //28 */
 
-function sum(total) {
-    let summation = function () {
-        let generalSum = total;
-        let length = arguments.length;
-        for (let i = 0; i < length; i++)
-            generalSum += arguments[i];
-        return sum(generalSum);
-    }
-
-    summation.valueOf = function () {
-        return total;
-    };
-
-    return summation;
+// function sum(total) {
+//     let summation = function () {
+//         let generalSum = total;
+//         let length = arguments.length;
+//         for (let i = 0; i < length; i++)
+//             generalSum += arguments[i];
+//         return sum(generalSum);
+//     }
+//
+//     summation.valueOf = function () {
+//         return total;
+//     };
+//
+//     return summation;
+// }
+function add(n) {
+    const func = x => add(n + x)
+    func.valueOf = () => n
+    return func
 }
 
-console.log(+sum(1));
-console.log(+sum(1)(2))
-console.log(+sum(1)(2)(3)(4)(5)(6)(7))
+console.log(add(1).valueOf());
+console.log(add(1)(2).valueOf())
+console.log(add(1)(2)(3)(4)(5)(6)(7).valueOf())
 
 
 // const sum = (n) => {

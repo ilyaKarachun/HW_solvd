@@ -1,42 +1,13 @@
   <script>
-    function running(total) {
-      let summation = function () {
-        let sum = total;
-        let length = arguments.length;
-        for (let i = 0; i < length; i++)
-          sum += arguments[i];
-        return running(sum);
-      }
+    function add(n) {
+      const func = x => add(n + x)
+      func.valueOf = () => n
 
-      summation.valueOf = function () {
-        return total;
-      };
-
-      return summation;
+      return func
     }
-
-    console.log(+running(1));
-    console.log(+running(1)(2))
-    console.log(+running(1)(2)(3)(4)(5)(6)(7))
-
-    function add(n){
-      let fn = function(x) {
-        return add(n + x);
-      };
-
-      fn.valueOf = function() {
-        return n;
-      };
-
-      return fn;
-    }
-
-    console.log(add(1));
-    console.log(add(1)(2))
-    console.log(add(1)(2)(3)(4)(5)(6)(7))
-
-
-
+    console.log(add(1).valueOf());
+    console.log(+add(1)(2))
+    console.log(+add(1)(2)(3)(4)(5)(6)(7))
 
     // const curry = fn => {
     //   const innerFn = (N, args) => {
