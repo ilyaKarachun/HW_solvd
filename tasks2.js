@@ -6,55 +6,15 @@ sum(1) //1
 sum(1)(2) //2
 sum(1)(2)(3)(4)(5)(6)(7) //28 */
 
-// function sum(total) {
-//     let summation = function () {
-//         let generalSum = total;
-//         let length = arguments.length;
-//         for (let i = 0; i < length; i++)
-//             generalSum += arguments[i];
-//         return sum(generalSum);
-//     }
-//
-//     summation.valueOf = function () {
-//         return total;
-//     };
-//
-//     return summation;
-// }
-function add(n) {
-    const func = x => add(n + x)
+function sum(n) {
+    const func = x => sum(n + x)
     func.valueOf = () => n
     return func
 }
 
-console.log(add(1).valueOf());
-console.log(add(1)(2).valueOf())
-console.log(add(1)(2)(3)(4)(5)(6)(7).valueOf())
-
-
-// const sum = (n) => {
-//     if (n <= 0) return 0;
-//     if (n === 1) return (num) => num;
-//
-//     let _args = [];
-//
-//     function helper (...args) {
-//         _args = [..._args, ...args];
-//         if (_args.length >= n) {
-//             args.length = n;
-//             return _args.reduce( (acc, num) => acc + num);
-//         } else {
-//             return helper
-//         }
-//     }
-//
-//     return helper
-// }
-//
-// console.log(sum(1)) //1
-// console.log(sum(1)(2)) //2
-// console.log(sum(1)(2)(3)(4)(5)(6)(7)) //28
-
+console.log(sum(1).valueOf());
+console.log(sum(1)(2).valueOf())
+console.log(sum(1)(2)(3)(4)(5)(6)(7).valueOf())
 
 /* Write a realisation of a debounce function, here is the specification:
 debounce(func, [wait=0])
@@ -66,12 +26,19 @@ Creates a debounced function that delays invoking func until after wait
     return the result of the last func invocation. */
 
 const debounce = ( fn, delay = 0) => {
-    return setTimeout( () => {
-       return fn()
+    let fnId;
+
+    fnId = () => setTimeout(() => {
+        return fn()
     }, delay)
+
+    clearInterval(fnId)
+    console.log(fnId.toString())
+    return fnId()
+
 }
 
 const sayHi = () => console.log('hi')
 
-// console.log(debounce(sayHi, 3000))
-// console.log(debounce(sayHi))
+console.log(debounce(sayHi, 3000))
+console.log(debounce(sayHi))
