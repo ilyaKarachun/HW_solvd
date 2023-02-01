@@ -27,15 +27,12 @@ Creates a debounced function that delays invoking func until after wait
 
 const debounce = ( fn, delay = 0) => {
     let fnId;
-
-    fnId = () => setTimeout(() => {
-        return fn()
-    }, delay)
-
-    clearInterval(fnId)
-    console.log(fnId.toString())
-    return fnId()
-
+    return (...args) => {
+        clearInterval(fnId)
+        setTimeout(() => {
+            return fn(...args)
+        }, delay)
+    }
 }
 
 const sayHi = () => console.log('hi')
