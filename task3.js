@@ -1,7 +1,14 @@
-const sortedArr = [ 1, 2]
-const backwardArr = [ 2, 1]
-const variablesForFn = 2
+//===== var
+const variablesForFn = 10
+
+// arrays
+const sortedArr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const backwardArr = [ 10, 9, 8, 7,6, 5, 4, 3, 2, 1 ]
 const randomArr = generateRandomNumbsArr(variablesForFn,variablesForFn)
+
+// console.log(sortedArr)
+// console.log(backwardArr)
+// console.log(randomArr)
 
 function generateRandomNumbsArr (count, maxNumb) {
     const newArr = []
@@ -46,26 +53,26 @@ function quicksort(array) {
 
 //==== bubble
 console.time()
-console.log('bubble backwardArr: ', bubbleSort( backwardArr)) //9.919ms
+console.log('bubble backwardArr: ', bubbleSort( backwardArr)) //9.919ms - 9.785ms - 9.559ms - 9.929ms - 11.093ms
 console.timeEnd()
 
 console.time()
-console.log('bubble sorted: ', bubbleSort( sortedArr)) // 0.097ms
+console.log('bubble sorted: ', bubbleSort( sortedArr)) // 0.097ms -  0.104ms -  0.103ms - 0.215ms - 0.158ms
 console.timeEnd()
 
 console.time()
-console.log('bubble RandomArr: ',bubbleSort(randomArr)) //0.08ms
+console.log('bubble RandomArr: ',bubbleSort(randomArr)) //0.08ms - 0.09ms - 0.2ms - 0.103ms - 0.288ms
 console.timeEnd()
-
-//==== quick
+//
+// //==== quick
 console.time()
-console.log('quick backwardArr: ',quicksort(backwardArr)) // 0.153ms
-console.timeEnd()
-
-console.time()
-console.log('quick sortedArr: ',quicksort(sortedArr)) // 0.22ms
+console.log('quick backwardArr: ',quicksort(backwardArr)) // 0.153ms - 0.165ms - 0.159ms -  0.178ms - 0.206ms
 console.timeEnd()
 
 console.time()
-console.log('quick randomArr: ',quicksort(randomArr)) // 0.168ms
+console.log('quick sortedArr: ',quicksort(sortedArr)) // 0.22ms - 0.262ms - 0.238ms - 0.257ms - 0.235ms
+console.timeEnd()
+
+console.time()
+console.log('quick randomArr: ',quicksort(randomArr)) // 0.168ms -  0.205ms -  0.095ms - 0.084ms - 0.304ms
 console.timeEnd()
