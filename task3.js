@@ -1,14 +1,14 @@
 //===== var
-const variablesForFn = 30
+const variablesForFn = 10
 
 // arrays
 const sortedArr = ascArr(variablesForFn)
 const backwardArr = dscArr(variablesForFn)
 const randomArr = generateRandomNumbsArr(variablesForFn,variablesForFn)
 
-console.log(sortedArr)
-console.log(backwardArr)
-console.log(randomArr)
+// console.log(sortedArr)
+// console.log(backwardArr)
+// console.log(randomArr)
 
 function ascArr( numb ) {
     let ascSortArr = []
@@ -66,6 +66,22 @@ function quicksort(array) {
 
     return quicksort(left).concat(pivot, quicksort(right));
 };
+
+function compareSorts(arr) {
+
+    let start = performance.now();
+    bubbleSort(arr);
+    let bubbleTime = performance.now() - start;
+    start = performance.now();
+    quicksort(arr);
+    let quickTime = performance.now() - start;
+    if (quickTime < bubbleTime) {
+        return 'quickSort better';
+    }
+    return "bubbleSort better";
+}
+
+console.log(compareSorts(sortedArr))
 
 //==== bubble
 // console.time()
