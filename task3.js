@@ -1,5 +1,5 @@
 //===== var
-const variablesForFn = 10
+const variablesForFn = 11
 
 // arrays
 const sortedArr = ascArr(variablesForFn)
@@ -81,7 +81,9 @@ function compareSorts(arr) {
     return "bubbleSort better";
 }
 
-console.log(compareSorts(sortedArr))
+// console.log(compareSorts(sortedArr)) // after 10 elements in sorted Array => quickSort is better
+// console.log(compareSorts(backwardArr)) // after 10 elements in sorted Array => quickSort is better, the same result
+console.log(compareSorts(randomArr)) // after 10 elements in random Array => quickSort is better, the same result
 
 //==== bubble
 // console.time()
