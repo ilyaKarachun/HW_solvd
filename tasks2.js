@@ -14,13 +14,13 @@ sum(1)(2)(3)(4)(5)(6)(7) //28 */
 
 function sum(n) {
     const func = x => sum(n + x);
-    func[Symbol.toPrimitive] = () => n;
+    func.valueOf = () => n;
     return func
 }
 
-console.log(sum(1));
+console.log(+sum(1));
 console.log(+sum(1)(2))
-console.log(sum(1)(2)(3)(4)(5)(6)(7))
+console.log(+sum(1)(2)(3)(4)(5)(6)(7))
 
 /* Write a realisation of a debounce function, here is the specification:
 debounce(func, [wait=0])

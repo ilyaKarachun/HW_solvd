@@ -1,5 +1,5 @@
 //===== var
-const variablesForFn = 11
+const variablesForFn = 10
 
 // arrays
 const sortedArr = ascArr(variablesForFn)
@@ -68,8 +68,7 @@ function quicksort(array) {
 };
 
 function compareSorts(arr) {
-
-    let start = performance.now();
+        let start = performance.now();
     bubbleSort(arr);
     let bubbleTime = performance.now() - start;
     start = performance.now();
@@ -81,9 +80,10 @@ function compareSorts(arr) {
     return "bubbleSort better";
 }
 
-// console.log(compareSorts(sortedArr)) // after 10 elements in sorted Array => quickSort is better
-// console.log(compareSorts(backwardArr)) // after 10 elements in sorted Array => quickSort is better, the same result
-console.log(compareSorts(randomArr)) // after 10 elements in random Array => quickSort is better, the same result
+console.log(compareSorts(sortedArr)) // after 10 elements in sorted Array => quickSort is better
+
+console.log(compareSorts(backwardArr)) // after 10 elements, without number 10 in backSorted Array => quickSort is better, the same result
+// console.log(compareSorts(randomArr)) // after 10 elements in random Array => quickSort is better, the same result
 
 //==== bubble
 // console.time()
@@ -110,3 +110,19 @@ console.log(compareSorts(randomArr)) // after 10 elements in random Array => qui
 // console.time()
 // console.log('quick randomArr: ',quicksort(randomArr)) // 0.168ms -  0.205ms -  0.095ms - 0.084ms - 0.304ms
 // console.timeEnd()
+
+
+// ============= Second task
+
+/* For the following Θ-difficulties, write strict and non-strict O-limits and, optionally, strict and non-strict Ω-limits (provided that they exist).
+1. Θ( 1 )
+2. Θ( √n )
+3. Θ( n )
+4. Θ( n^2 )
+5. Θ( n^3 ) */
+
+// 1. Strict O ( 1 ), non-strict o( n ) , strict Ω ( 1 ), non-strict - не существует, так сложность от 1 минимальная.
+// 2. Strict O ( √n ), non-strict o( n ) , strict Ω ( √n ), non-strict ω( 1 ).
+// 3. Strict O ( n ), non-strict o( n ^3 ) , strict Ω ( n ), non-strict ω( 1 ).
+// 4. Strict O ( n ^2 ), non-strict o( n ^3 ) , strict Ω ( n ^2 ), non-strict ω( 1 ).
+// 5.Strict O ( n ^3 ), non-strict o( √n ^3 ) , strict Ω ( n ^3 ), non-strict ω( √n n^2 ).
