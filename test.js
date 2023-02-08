@@ -33,7 +33,17 @@
 // console.log(`CPUs: ${os.cpus().length}`);
 // console.log(`Total Memory: ${os.totalmem()}`);
 // console.log(`Free Memory: ${os.freemem()}`);
-// console.log(`Home directory: ${os.homedir()}`);
+// console.log(`Home directory: ${os.homedir()}`);тщву
 
-const a = Array(6).fill(1,2,3)
-console.log(a)
+function highlight(strings, ...values) {
+    let str = '';
+    strings.forEach((string, i) => {
+        str += string + (values[i] || '');
+    });
+    return str;
+}
+const name = 'Snickers';
+const age = '100';
+const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+console.log(sentence);
+
