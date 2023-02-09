@@ -35,15 +35,43 @@
 // console.log(`Free Memory: ${os.freemem()}`);
 // console.log(`Home directory: ${os.homedir()}`);тщву
 
-function highlight(strings, ...values) {
-    let str = '';
-    strings.forEach((string, i) => {
-        str += string + (values[i] || '');
-    });
-    return str;
-}
-const name = 'Snickers';
-const age = '100';
-const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
-console.log(sentence);
+// function highlight(strings, ...values) {
+//     let str = '';
+//     strings.forEach((string, i) => {
+//         str += string + (values[i] || '');
+//     });
+//     return str;
+// }
+// const name = 'Snickers';
+// const age = '100';
+// const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
+// console.log(sentence);
+
+// let myArr = [ 1, 4, 10, 30, 50, 80, 90, 109 ]
+
+// function binarySearch(arr, val) {
+//     let start = 0
+//     let end = arr.length - 1
+//     while (start <= end) {
+//         let mid = Math.floor(( start + end ) / 2)
+//
+//         if ( arr[mid] === val ) {
+//             return mid
+//         }
+//
+//         if (val < arr[mid]) {
+//             end = mid - 1
+//         } else {
+//             start = mid + 1
+//         }
+//     }
+//     return -1
+// }
+
+// function binarySearch(arr, val, start = 0, end = arr.length - 1) {
+//
+// }
+//
+// console.log(binarySearch(myArr, 90))
+
 

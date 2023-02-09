@@ -80,9 +80,9 @@ function compareSorts(arr) {
     return "bubbleSort better";
 }
 
-// console.log(compareSorts(sortedArr)) // after 10 elements in sorted Array => quickSort is better
-//
-// console.log(compareSorts(backwardArr)) // after 10 elements, without number 10 in backSorted Array => quickSort is better, the same result
+console.log(compareSorts(sortedArr)) // after 10 elements in sorted Array => quickSort is better
+
+console.log(compareSorts(backwardArr)) // after 10 elements, without number 10 in backSorted Array => quickSort is better, the same result
 console.log(compareSorts(randomArr)) // after 10 elements in random Array => quickSort is better, the same result
 
 //==== bubble
