@@ -5,18 +5,6 @@ the n-th Fibonacci number is the sum of the (n-1)th and the (n-2)th.
 Please do caching in 2 ways, one with Map and one with WeakMap
 Later we can see difference in memory */
 
-// Fibonacci fn
-function fib(n) {
-    let a = 1;
-    let b = 1;
-    for (let i = 3; i <= n; i++) {
-        let c = a + b;
-        a = b;
-        b = c;
-    }
-    return b;
-}
-
 // Caching with Map
 const cacheMap = new Map();
 
@@ -41,13 +29,14 @@ function fibonacciWithMap(n) {
     return result;
 }
 
-
-
 // Caching with WeakMap
 const cacheWeakMap = new WeakMap();
 
 function fibonacciWithWeakMap(n) {
-    if (cacheWeakMap.has(Object(n))) {
+    console.log(cacheWeakMap)
+    let searchEl = {'bl': n }
+    console.log(cacheWeakMap.get(searchEl))
+    if (cacheWeakMap.has(searchEl)) {
         return cacheWeakMap.get(Object(n));
     }
 
@@ -64,20 +53,41 @@ function fibonacciWithWeakMap(n) {
         }
     }
 
-    cacheWeakMap.set(Object(n), result);
+    cacheWeakMap.set({'bl': n }, result);
     return result;
 }
 
 // fibonacciWithMap(100)
 fibonacciWithMap(90)
+fibonacciWithMap(12)
+// fibonacciWithMap(12)
 // fibonacciWithMap(15)
 // console.log(fibonacciWithMap(100))
 // console.log(fibonacciWithMap(100))
 // // console.log(fibonacciWithWeakMap(40))
 // console.log("cacheMap ", cacheMap)
-fibonacciWithWeakMap(20)
-fibonacciWithWeakMap(42)
-
-console.log('cacheWeakMap: ', cacheWeakMap)
+// fibonacciWithWeakMap(20)
+// fibonacciWithWeakMap(20)
+// fibonacciWithWeakMap(40)
+// fibonacciWithWeakMap(30)
+// fibonacciWithWeakMap(20)
+// console.log('cacheWeakMap: ', cacheWeakMap.get( Object(20) ))
+//
+// console.log('cacheWeakMap: ', cacheWeakMap.get({[[PrimitiveValue]]: 20}))
 console.log('cacheMap: ', cacheMap)
+// console.log('cacheMap: ', cacheMap.has(12))
 // console.log(fib(100))
+
+
+// function cache(fn) {
+//     const cache = []
+//     return function cached(n) {
+//         if (!cache[n]) {
+//             let result = fn(n)
+//             cache[n] = result
+//         }
+//         return cache[n]
+//     }
+// }
+//
+// console.log(cache(fibonacci(5)))

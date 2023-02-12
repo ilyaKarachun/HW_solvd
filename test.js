@@ -1,77 +1,74 @@
-// function procedure(n){
-//     let newArr = []
-//     const divideNumb = 100 / n
-//     let plus = n
-//    for (let i = 0; i < divideNumb; i++) {
-//        let subtractNumb = 0 + plus
-//        newArr.push(subtractNumb)
-//        plus +=n
-//        while (plus >= 100) {
-//            break
-//        }
-//    }
+// fn fibonacci
+
+function fibonacci(n) {
+    let result;
+
+    if (n < 2) {
+        result = n;
+    } else {
+        let a = 1;
+        result = 1;
+        for (let i = 3; i <= n; i++) {
+            let c = a + result;
+            a = result;
+            result = c;
+        }
+    }
+    return result
+}
+
+const cacheMap = new Map();
+
+function cachedWithMap(n) {
+    cacheMap.set(1,1)
+    cacheMap.set(2,1)
+    let result
+    if (!cacheMap.has(n)) {
+            result = fibonacci(n);
+            cacheMap.set(n, result)
+        }
+       return cacheMap.get(n)
+}
+
+const cacheWeakMap = new WeakMap();
+
+function cachedWithWeakMap(n) {
+    cacheWeakMap.set(Object(1),1)
+    cacheWeakMap.set(Object(2),1)
+    let objMap = { number: n}
+    let result
+    if (!cacheWeakMap.has(Object(n))) {
+            result = fibonacci(n);
+
+            cacheWeakMap.set(objMap, result)
+        }
+        cacheWeakMap.get(objMap)
+    console.log(objMap)
+        return result
+}
+
+// fibonacci(100);
+// cachedWithMap(100)
+// console.log(cacheMap)
 //
-//     return  newArr.map(i => ))
+// cachedWithWeakMap(90)
+// console.log(cacheWeakMap.has({ number: 90 } ))
+// console.log(cacheWeakMap)
+// console.log(Object(1))
+// function add(n) {
+//     return add(n + 5)
 // }
+// let arr = []
 //
-// console.log(procedure(25))
-
-// String.prototype.repeat = Function.prototype.repeat
-//
-// console.log(repeat(3))
-
-// function add(a, b) {
-//     return (BigInt(a) + BigInt(b)).toString(); // Fix me!
-// }
-//
-// console.log(add('63829983432984289347293874', '90938498237058927340892374089'))
-
-// const os = require('os');
-//
-// console.log(`Operating System: ${os.type()} ${os.release()}`);
-// console.log(`Architecture: ${os.arch()}`);
-// console.log(`CPUs: ${os.cpus().length}`);
-// console.log(`Total Memory: ${os.totalmem()}`);
-// console.log(`Free Memory: ${os.freemem()}`);
-// console.log(`Home directory: ${os.homedir()}`);тщву
-
-// function highlight(strings, ...values) {
-//     let str = '';
-//     strings.forEach((string, i) => {
-//         str += string + (values[i] || '');
-//     });
-//     return str;
-// }
-// const name = 'Snickers';
-// const age = '100';
-// const sentence = highlight`My dog's name is ${name} and he is ${age} years old`;
-// console.log(sentence);
-
-// let myArr = [ 1, 4, 10, 30, 50, 80, 90, 109 ]
-
-// function binarySearch(arr, val) {
-//     let start = 0
-//     let end = arr.length - 1
-//     while (start <= end) {
-//         let mid = Math.floor(( start + end ) / 2)
-//
-//         if ( arr[mid] === val ) {
-//             return mid
-//         }
-//
-//         if (val < arr[mid]) {
-//             end = mid - 1
-//         } else {
-//             start = mid + 1
-//         }
+// function test(add) {
+//     return  function cached(n) {
+//         arr.push(add(n))
+//         return arr
 //     }
-//     return -1
-// }
-
-// function binarySearch(arr, val, start = 0, end = arr.length - 1) {
-//
 // }
 //
-// console.log(binarySearch(myArr, 90))
+// console.log(add(5))
+// test(add(5))
+// console.log(arr)
 
 
