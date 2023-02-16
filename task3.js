@@ -122,3 +122,4 @@ console.log(compareSorts(randomArr)) // after 10 elements in random Array => qui
 5. Θ( n^3 ): strict o ( √n n^3 ), non-strict O( n^3 ), non-strict Ω ( n^3 ), strict ω ( n^2 * log n )
  */
 
+
