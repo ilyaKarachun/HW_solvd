@@ -25,8 +25,12 @@ class EventEmitter {
 
     emit(eventName, ...args) {
         const listeners = this.listeners[eventName];
+        console.log(listeners)
         if (listeners) {
-            listeners.forEach(listener => listener(...args));
+            // listeners.forEach(listener => listener(...args));
+            for (let i = 0; i < listeners.length; i++ ) {
+                listeners[i](...args)
+            }
         } else {
             console.log(`we dont have this event in our Array ${eventName}`)
         }
@@ -39,7 +43,9 @@ class EventEmitter {
             if (index !== -1) {
                 listeners.splice(index, 1);
             }
-        } else {
+        }
+
+        else {
             console.log(`we dont have this event in our Array ${eventName}`)
         }
     }
@@ -53,12 +59,17 @@ emitter.prependListener('click', (data) => console.log(`prependListener 2: ${dat
 emitter.prependListener('click', (data) => console.log(`prependListener 2: ${data}`))
 emitter.prependListener('click', (data) => console.log(`prependListener 2: ${data}`))
 emitter.prependListener('mouseOver', (data) => console.log(`prependListener 3: ${data}`))
+emitter.prependListener('test', () => console.log(`prependListener test`))
 
 emitter.on('click', 'new data')
 // console.log(emitter)
 
 emitter.removeListener('click', 'new data')
-emitter.emit('click', 'coffee')
-emitter.emit('mouseOver', 'need less eat')
-emitter.emit('clicke', 'coffee')
+// emitter.emit('click', 'coffee')
+// emitter.emit('mouseOver', 'need less eat')
+// emitter.emit('clicke', 'coffee')
 console.log(emitter)
+// emitter.emit('test')
+emitter.emit('click', 'look at this')
+
+

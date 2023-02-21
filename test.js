@@ -1,83 +1,89 @@
+ function someFn() {
+     console.log(arguments)
+ }
 
+ function secondFn() {
+     console.log(arguments)
+ }
 
-// // fn fibonacci
-//
-// function fibonacci(n) {
-//     let result;
-//
-//     if (n < 2) {
-//         result = n;
-//     } else {
-//         let a = 1;
-//         result = 1;
-//         for (let i = 3; i <= n; i++) {
-//             let c = a + result;
-//             a = result;
-//             result = c;
+Function.prototype.delay = function (delay) {
+
+    return function (...args) {
+        setTimeout(() => {
+            this(...args)
+        }, delay)
+    }.bind(this)
+}
+
+ const someFnWith4000delay = someFn.delay(2000)
+ someFnWith4000delay(1,['dsd'], 2, '50')
+
+ // class DelayFN {
+    //     constructor(fn) {
+    //         this.fn = fn
+    //     }
+    //     delay(timer) {
+    //         setTimeout((args) => {
+    //             this.fn(args)
+    //         }, timer)
+    //     }
+    // }
+    //
+    // function someFn() {
+    //     console.log(arguments)
+    // }
+    //
+    // const someFnWithDelay = new DelayFN(someFn(1,['dsd'], 2, '43'))
+    //
+    // someFnWithDelay.delay(5000)
+
+// const someFnWithDelay = (fn, delay) => {
+//     const timer = setTimeout(() => {
+//         fn()
+//     }, delay)
+//     return clearTimeout(timer)
+// }
+
+// someFn(1,['dsd'], 2, '43')
+
+// someFnWithDelay(someFn(1,['dsd'], 2, '43'), 10000)
+
+// const binaryTree = {
+//     value: 6,
+//     left: {
+//         value: 5,
+//         left: {
+//             value: 3,
+//             left: {
+//                 value: 1
+//             }
+//         },
+//         right: {
+//             value: 7
+//         }
+//     },
+//     right: {
+//         value: 10,
+//         left: {
+//             value: 4
+//         },
+//         right: {
+//             value: 5
 //         }
 //     }
-//     return result
 // }
 //
-// const cacheMap = new Map();
+// function sumTree(tree) {
+//     let sum = tree.value
 //
-// function cachedWithMap(n) {
-//     cacheMap.set(1,1)
-//     cacheMap.set(2,1)
-//     let result
-//     if (!cacheMap.has(n)) {
-//             result = fibonacci(n);
-//             cacheMap.set(n, result)
-//         }
-//        return cacheMap.get(n)
-// }
-//
-// const cacheWeakMap = new WeakMap();
-//
-// function cachedWithWeakMap(n) {
-//     cacheWeakMap.set(Object(1),1)
-//     cacheWeakMap.set(Object(2),1)
-//     let objMap = { number: n}
-//     let result
-//     if (!cacheWeakMap.has(Object(n))) {
-//             result = fibonacci(n);
-//
-//             cacheWeakMap.set(objMap, result)
-//         }
-//         cacheWeakMap.get(objMap)
-//     console.log(objMap)
-//         return result
-// }
-//
-// // fibonacci(100);
-// // cachedWithMap(100)
-// // console.log(cacheMap)
-// //
-// // cachedWithWeakMap(90)
-// // console.log(cacheWeakMap.has({ number: 90 } ))
-// // console.log(cacheWeakMap)
-// // console.log(Object(1))
-// // function add(n) {
-// //     return add(n + 5)
-// // }
-// // let arr = []
-// //
-// // function test(add) {
-// //     return  function cached(n) {
-// //         arr.push(add(n))
-// //         return arr
-// //     }
-// // }
-// //
-// // console.log(add(5))
-// // test(add(5))
-// // console.log(arr)
-//
-//
-
-// function factor(n) {
-//     if (n < 2) {
-//         return 1
+//     if (tree.left) {
+//         sum += sumTree(tree.left)
 //     }
-//     return n * factor(n - 1)
-
+//     if (tree.right) {
+//         sum += sumTree(tree.right)
+//     }
+//
+//     return sum
+// }
+//
+// console.log(sumTree(binaryTree))
