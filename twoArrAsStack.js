@@ -29,6 +29,7 @@ class Stack {
         return this.arr.pop()
     }
     isEmpty() {
+        // return this.arr.isEmpty()
         return this.arr.length === 0
     }
 }
@@ -52,21 +53,24 @@ class Queue {
         this.stack1.arr.push(...value);
     }
     dequeue() {
-        if (this.stack2.arr.length === 0) {
-            while (this.stack1.arr.length > 0) {
+        if (this.stack2.isEmpty()) { // if have something in stack2 then we take it
+        while (!this.stack1.isEmpty()) { // transport all el from stack1 in stack2 in backward order
+            // if (this.stack2.arr.length === 0) {
+            // while (this.stack1.arr.length > 0) {
                 this.stack2.arr.push(this.stack1.arr.pop());
             }
         }
         return this.stack2.arr.pop();
     }
     isEmpty() {
-        return this.stack1.arr.length === 0 && this.stack2.arr.length === 0;
+        return this.stack1.isEmpty() && this.stack2.isEmpty()
+        // return this.stack1.arr.length === 0 && this.stack2.arr.length === 0;
     }
 }
 
 let test = new Queue()
 console.log(test.isEmpty())
-test.enqueue(3,4,1,10,20,40)
+test.enqueue(8,9,10,3,4,1,10,20,40)
 console.log(test.isEmpty())
 test.enqueue(2)
 test.enqueue(3)
@@ -74,5 +78,13 @@ test.enqueue(4)
 console.log(test)
 console.log(test.dequeue())
 console.log(test.dequeue())
+console.log(test.dequeue())
+console.log(test.dequeue())
+console.log(test.dequeue())
+console.log(test.dequeue())
+console.log(test.dequeue())
+console.log(test.dequeue())
+console.log(test.dequeue())
 
+console.log(process.memoryUsage())
 
