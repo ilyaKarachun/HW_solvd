@@ -1,27 +1,115 @@
-function hasLoop(head) {
-    let slow = head;
-    let fast = head;
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
 
-    while (fast !== null && fast.next !== null) {
-        slow = slow.next;
-        fast = fast.next.next;
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
 
-        if (slow === fast) {
-            return true;
+    add(value) {
+        const newNode = new Node(value);
+        if (this.length === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        }
+
+        this.length++;
+    }
+
+    remove(value) {
+        let currentNode = this.head;
+        let previousNode = null;
+
+        while (currentNode !== null) {
+            if (currentNode.value === value) {
+                if (previousNode === null) {
+                    this.head = currentNode.next;
+                } else {
+                    previousNode.next = currentNode.next;
+                }
+
+                if (currentNode.next === null) {
+                    this.tail = previousNode;
+                }
+
+                this.length--;
+                break;
+            }
+
+            previousNode = currentNode;
+            currentNode = currentNode.next;
         }
     }
 
-    return false;
+    find(value) {
+        let currentNode = this.head;
+
+        while (currentNode !== null) {
+            if (currentNode.value === value) {
+                return currentNode;
+            }
+
+            currentNode = currentNode.next;
+        }
+
+        return null;
+    }
+
+    getIndexOf(value) {
+        let current = this.head;
+        let index = 0;
+
+        while(current) {
+            if (current.value === value) {
+                return index;
+            }
+
+            current = current.next;
+            index++;
+        }
+
+        return -1;
+    }
+
+    hasLoop() {
+        let slow = this.head;
+        let fast = this.head;
+
+        while (fast !== null && fast.next !== null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow === fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
-const head = {data: 1, next: null};
-const node2 = {data: 2, next: null};
-const node3 = {data: 3, next: null};
-const node4 = {data: 4, next: null};
-
-head.next = node2;
-node2.next = node3;
-node3.next = node4;
-node4.next = head;
-
-console.log(hasLoop(head))
+const list = new LinkedList();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+// console.log(list)
+// list.remove(2);
+console.log(list.getIndexOf(3))
+// const nodeFindAfterRemove = list.find(2);
+//
+// const nodeFind = list.find(3);
+// console.log(nodeFindAfterRemove)
+// console.log(nodeFind)
+//
+// const hasLoop = list.hasLoop();
+// console.log(hasLoop)
