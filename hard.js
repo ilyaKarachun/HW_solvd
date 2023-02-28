@@ -1,53 +1,59 @@
 class Stack {
     constructor() {
-        this.arr = []
+        this.arr = [];
     }
     top() {
-        return this.arr[this.arr.length - 1]
+        return this.arr[this.arr.length - 1];
     }
     push(...val) {
-        return this.arr.push(...val)
+        return this.arr.push(...val);
     }
     pop() {
-        return this.arr.pop()
+        return this.arr.pop();
     }
     isEmpty() {
-        return this.arr.length === 0
+        return this.arr.length === 0;
     }
 }
 
-class findTheLargestDivisorInStack {
+class GCD {
     constructor() {
         this.stack1 = new Stack();
         this.stack2 = new Stack();
     }
+    push(value) {
+        this.stack1.push(value);
 
-    push(...value) {
-        return this.stack1.push(...value)
+        if (this.stack2.isEmpty()) {
+            this.stack2.push(value);
+        } else {
+            let currentGCD = this.stack2.top();
+            let newGCD = this.euclidAlgorithm(value, currentGCD);
+
+            if (newGCD <= currentGCD) {
+                this.stack2.push(newGCD);
+            }
+        }
     }
 
-    gcd() {
-        if (this.stack1.isEmpty()) {
-            return null;
-        }
+    getMaxGCD() {
+        return this.stack2.top();
+    }
 
-        while (this.stack1.arr.length > 1) {
-            const a = this.stack1.pop();
-            const b = this.stack1.pop();
-            // this.stack2.push([a, b]);
-            let [x, y] = [a, b];
-            while (y) {
-                [x, y] = [y, x % y];
-            }
-            this.stack1.push(x);
+    euclidAlgorithm(a, b) {
+        if (b === 0) {
+            return a;
         }
-
-        return this.stack1.top();
+        return this.euclidAlgorithm(b, a % b);
     }
 }
 
-let test = new findTheLargestDivisorInStack()
+const test = new GCD()
 
-test.push(24, 60, 13, 240)
-console.log(test)
-console.log(test.gcd())
+test.push(12)
+test.push(6)
+// test.push(12)
+// test.push(24)
+// test.push(7)
+
+console.log(test.getMaxGCD())
